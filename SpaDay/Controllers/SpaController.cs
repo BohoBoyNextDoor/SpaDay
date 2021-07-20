@@ -10,8 +10,10 @@ namespace SpaDay.Controllers
 {
     public class SpaController : Controller
     {
+       
         public bool CheckSkinType(string skinType, string facialType)
         {
+             
 
             if (facialType != "Microdermabrasion")
             {
@@ -28,12 +30,19 @@ namespace SpaDay.Controllers
                     return false;
                 }
             }
-
+            
+            ViewBag.clientSkinType = skinType;
             return true;
+            
 
         }
+        public void Name(String userName)
+        {
+            ViewBag.Name = userName;
+        }
+       
 
-        public IActionResult Index()
+    public IActionResult Index()
         {
             return View();
         }
@@ -55,8 +64,9 @@ namespace SpaDay.Controllers
                     appropriateFacials.Add(facials[i]);
                 }
             }
+            ViewBag.appropriateFacials = appropriateFacials;
             return View();
-        }
+    }
 
 
     }
